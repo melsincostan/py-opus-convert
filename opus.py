@@ -77,11 +77,12 @@ def convert(fileDict):
                 print("[Error][Converting]\t" + inFile)
         elif fileInfo["extension"] in IMAGES:
             try:
-                print("[Resizing]\t" + inFile + " to " + outFile)
+                print("[Resizing]\t" + " to " + outFile)
                 # copy(inFile, FOLDER_DELIM.join(outFile.split(FOLDER_DELIM)[:-1]))
                 image = Image.open(inFile)
-                image.thumbnail((1000, 1000))
-                image.save(outFile)
+                rgbImage = image.convert("RGB")
+                rgbImage.thumbnail((1000, 1000))
+                rgbImage.save(outFile)
             except:
                 print("[Error][Resizing]\t" + inFile + " to " + outFile)
         else:
